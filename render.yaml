@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: tds-virtual-ta
+    env: python
+    buildCommand: pip install -r app/requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
+    plan: free
+    envVars:
+      - key: OPENAI_API_KEY
+        value: YOUR_OPENAI_API_KEY
+      - key: DISCOURSE_API_KEY
+        value: YOUR_DISCOURSE_API_KEY
+      - key: DISCOURSE_API_USER
+        value: system
+      - key: DISCOURSE_BASE_URL
+        value: https://tds.discourse.group
